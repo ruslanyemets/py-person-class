@@ -11,11 +11,10 @@ def create_person_list(people: list) -> list:
     person_list = [Person(human["name"], human["age"]) for human in people]
 
     for human in people:
+        current_person = Person.people[human["name"]]
         if human.get("wife"):
-            Person.people[human["name"]].wife\
-                = Person.people[human["wife"]]
+            current_person.wife = Person.people[human["wife"]]
         elif human.get("husband"):
-            Person.people[human["name"]].husband\
-                = Person.people[human["husband"]]
+            current_person.husband = Person.people[human["husband"]]
 
     return person_list
